@@ -1,0 +1,81 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ex02 {
+    public static void main(String[] args) {
+
+
+        int i = 0;
+        int menu;
+        String [] listaItens = new String[10];
+
+        Scanner scanner = new Scanner(System.in);
+        do{
+
+            System.out.println("================= MENU =================");
+            System.out.println("--------------- Lanches ---------------");
+            System.out.println("1. X-tudo");
+            System.out.println("2. X-bacon");
+            System.out.println("3. X-salada");
+            System.out.println("4. X-picanha");
+            System.out.println("--------------- Bebidas ---------------");
+            System.out.println("5. Coca-cola");
+            System.out.println("6. Sprite");
+            System.out.println("7. H2O");
+            System.out.println("8. Pepsi");
+            System.out.println("9. Suco de laranja");
+            System.out.println("10. Ver carrinho");
+            System.out.println("0. Finalizar pedido");
+            menu = scanner.nextInt();
+
+
+
+            switch(menu){
+                case 1:
+                    listaItens[0] = ("X-tudo"); //adiciona item 1 na listaItens
+                    break;
+                case 2:
+                    listaItens[1] = ("X-bacon");
+                    break;
+                case 3:
+                    listaItens[2] = ("X-salada");
+                    break;
+                case 4:
+                    listaItens[3] = ("X-picanha");
+                    break;
+                case 5:
+                    listaItens[4] = ("coca-cola");
+                    break;
+                case 6:
+                    listaItens[5] = ("Sprite");
+                    break;
+                case 7:
+                    listaItens[6] = ("H2O");
+                    break;
+                case 8:
+                    listaItens[7] = ("Pepsi");
+                    break;
+                case 9:
+                    listaItens[8] = ("Suco de laranja");
+                    break;
+                case 10:
+                    System.out.println("Seu pedido até agora: "+Arrays.toString(listaItens));
+                    break;
+                case 0:
+                    System.out.println("Pedido finalizado...");
+                    break;
+                default:
+                    System.out.println("Opção inválida.");
+
+            }
+
+            i++;
+        }while(i < 10);
+
+        System.out.println("Seu pedido : "+Arrays.toString(listaItens));
+
+
+
+
+    }
+}
