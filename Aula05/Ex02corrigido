@@ -1,0 +1,89 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Ex02corrigido {
+    public static void main(String[] args) {
+
+
+        int i = 0;
+        int menu;
+        String [] listaItens = new String[10];
+
+        Scanner scanner = new Scanner(System.in);
+        do{
+
+            System.out.println("================= MENU =================");
+            System.out.println("--------------- Lanches ---------------");
+            System.out.println("1. X-tudo");
+            System.out.println("2. X-bacon");
+            System.out.println("3. X-salada");
+            System.out.println("4. X-picanha");
+            System.out.println("--------------- Bebidas ---------------");
+            System.out.println("5. Coca-cola");
+            System.out.println("6. Sprite");
+            System.out.println("7. H2O");
+            System.out.println("8. Pepsi");
+            System.out.println("9. Suco de laranja");
+            System.out.println("10. Ver carrinho");
+            System.out.println("0. Finalizar pedido");
+            System.out.println("Escolha uma opção: ");
+            menu = scanner.nextInt();
+
+            if (menu >= 1 && menu <= 9) { // Verifica se a opção é de 1 a 9
+                if (i < 10) {
+                    switch (menu) {
+                        case 1:
+                            listaItens[i] = ("X-tudo"); //adiciona item 1 na listaItens
+                            break;
+                        case 2:
+                            listaItens[i] = ("X-bacon");
+                            break;
+                        case 3:
+                            listaItens[i] = ("X-salada");
+                            break;
+                        case 4:
+                            listaItens[i] = ("X-picanha");
+                            break;
+                        case 5:
+                            listaItens[i] = ("coca-cola");
+                            break;
+                        case 6:
+                            listaItens[i] = ("Sprite");
+                            break;
+                        case 7:
+                            listaItens[i] = ("H2O");
+                            break;
+                        case 8:
+                            listaItens[i] = ("Pepsi");
+                            break;
+                        case 9:
+                            listaItens[i] = ("Suco de laranja");
+                            break;
+                    }
+                    i++;
+                }
+            } else if (menu == 10) {
+                System.out.println("Seu pedido:");
+                for (int j = 0; j < i; j++) {
+                    System.out.println((j+1) + ", " + listaItens[j]);
+                }
+            } else if (menu == 0) {
+                System.out.println("Pedido finalizado!");
+                break;
+            }
+            else {
+                System.out.println("Opção inválida!");
+            }
+
+
+        }while(i < 10);
+
+        if (menu != 0 || i == 10) {
+            System.out.println("========== SUA NOTA: PEDIDO FINAL ==========");
+            System.out.println(Arrays.toString(listaItens));
+        }
+
+
+        scanner.close();
+    }
+}
