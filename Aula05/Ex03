@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Ex03 {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        double resultadoArea = 0;
+
+        System.out.println("Que forma geométrica gostaria de fazer o calculo de área?");
+        System.out.println("1. Quadrado");
+        System.out.println("2. Triângulo");
+        System.out.println("3. Círculo");
+        int menu = scanner.nextInt();
+
+        switch (menu){
+            case 1:
+                System.out.println("Qual o tamanho do lado do quadrado?:");
+                double lado = scanner.nextDouble();
+                resultadoArea = lado * lado;
+                break;
+            case 2:
+                System.out.println("Qual a base do triângulo? :");
+                double base = scanner.nextDouble();
+                System.out.println("Qual a altura do  triângulo? :");
+                double altura = scanner.nextDouble();
+                resultadoArea =  (base * altura)/2;
+                break;
+            case 3:
+                System.out.println("Qual o raio do círculo? :");
+                double raio = scanner.nextDouble();
+                resultadoArea = Math.PI * raio * raio;
+                break;
+        }
+        if(menu < 1 || menu > 3){
+            System.out.println("Opção inválida");
+        }else{
+            System.out.println("O resultado do calculo de área da forma escolhida é: "+ resultadoArea +"²");
+        }
+
+        scanner.close();
+
+    }
+}
