@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Ex04 {
+    public static double celsiusParaFarenheit(double celsius){
+        return (celsius * 9/5) + 32;
+    }
+    public static double fahrenheitParaCelsius(double fahrenheit){
+        return  (fahrenheit - 32) * 5/9;
+    }
+    public static double kmParaMilhas(double km) {
+        return km / 1.60934;
+    }
+    public static double milhasParaKm(double milhas) {
+        return milhas * 1.60934;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double conversao= 0;
+
+        System.out.println("Conversor de unidades");
+        System.out.println("1. Converter Celsius para Fahrenheit.");
+        System.out.println("2. Converter Fahrenheit para Celsius.");
+        System.out.println("3. Converter Quilometros para Milhas.");
+        System.out.println("4. Converter Milhas para Quilometros.");
+        int opcao = scanner.nextInt();
+
+        switch (opcao){
+            case 1:
+                System.out.println("Digite o valor em Celsius");
+                double celsius = scanner.nextDouble();
+                conversao = celsiusParaFarenheit(celsius);
+                break;
+            case 2:
+                System.out.println("Digite o valor em Fahrenheit");
+                double fahrenheit = scanner.nextDouble();
+                conversao = fahrenheitParaCelsius(fahrenheit);
+                break;
+            case 3:
+                System.out.println("Digite o valor em Km: ");
+                double km = scanner.nextDouble();
+                conversao = kmParaMilhas(km);
+                break;
+            case 4:
+                System.out.println("Digite o valor em Milhas");
+                double milhas = scanner.nextDouble();
+                conversao = milhasParaKm(milhas);
+                break;
+
+        }
+        if (opcao < 1 || opcao > 4){
+            System.out.println("Opção inválida");
+        }else{
+            System.out.println("A conversão é : "+conversao);
+        }
+    }
+}
