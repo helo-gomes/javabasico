@@ -1,0 +1,73 @@
+package Aula07;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Ex01 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        ArrayList<String> filmes = new ArrayList<>();
+        int menu = 0;
+
+        //dica usar metodos da String
+        do{
+            System.out.println("============ LOCADORA =============");
+            System.out.println("1. Adicionar novo filme");
+            System.out.println("2. Excluir um filme");
+            System.out.println("3. consultar todos os filmes");
+            System.out.println("4. Pesquisar um filme");
+            System.out.println("5. Sair");
+            menu = scanner.nextInt();
+            scanner.nextLine();
+
+
+            switch (menu){
+                case 1:
+                    System.out.println("Qual o filme? :");
+                    String filme = scanner.nextLine().toLowerCase();
+                    filmes.add(filme);
+                    System.out.println("Filme adicionado!");
+                    break;
+                case 2:
+                    System.out.println("Qual filme gostaria de excluir? :");
+                    String excluirFilme = scanner.nextLine().toLowerCase();
+
+                    if (filmes.contains(excluirFilme)){
+                        filmes.remove(excluirFilme);
+                    }else{
+                        System.out.println("Filme não encontrado :( ");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Filmes adicionados a locadora: "+filmes);
+                    break;
+                case 4:
+                    //criar o sistema de pesquisa
+                    System.out.println("Busca: (Escreva o nome do filme ou palavra-chave) ");
+                    String buscaFilme = scanner.nextLine().toLowerCase();
+
+                    ArrayList<String> resultados = new ArrayList<>();
+
+                    for(String f : filmes){
+                        if(f.contains(buscaFilme)){
+                            resultados.add(f);
+                        }
+                    }
+                    if(!resultados.isEmpty()){
+                        System.out.println("Resultados encontrados: "+ resultados);
+                    }else{
+                        System.out.println("Filme não encontrado :(");
+                    }
+                case 5:
+                    System.out.println("Saindo...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+
+            }
+        }while(menu != 5);
+    }
+}
+
