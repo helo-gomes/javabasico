@@ -1,0 +1,116 @@
+package Aula06;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Ex02 {
+    public static void main(String[] args) {
+        /*Desenvolver um sistema para gerenciar um aluno e duas notas.
+         * O Sistema deve conter um menu capaz de
+         * adicionar um aluno e sua nota
+         * alterar o nome do aluno
+         * alterar a nota do aluno
+         * remover um aluno (e sua nota)
+         * consultar todos os alunos e suas notas
+         * calcular a media da turma */
+
+        Scanner scanner = new Scanner(System.in);
+
+        ArrayList<String> nomesAlunos = new ArrayList<>();
+        ArrayList<Double> notasAlunos = new ArrayList<>();
+        int menu = 0;
+        String nome = "";
+
+        do {
+            System.out.println("1. adicionar um aluno e sua nota");
+            System.out.println("2.alterar o nome de um aluno");
+            System.out.println("3.alterar a nota de um aluno");
+            System.out.println("4. remover um aluno (e sua nota)");
+            System.out.println("5.consultar todos os alunos e suas notas");
+            System.out.println("6. calcular a media da turma");
+            System.out.println("7.Sair");
+            menu = scanner.nextInt();
+            scanner.nextLine();  // Limpa o buffer
+
+            switch (menu) {
+                case 1:
+                    System.out.println("Qual o nome do aluno: ");
+                    nome = scanner.nextLine();
+                    nomesAlunos.add(nome);
+
+
+
+                    System.out.println("Qual a nota desse aluno :");
+                    double nota = scanner.nextDouble();
+                    notasAlunos.add(nota);
+
+                    break;
+                case 2:
+                    System.out.println("Qual o nome registrado que deseja alterar? :");
+                    String nomeAntigo = scanner.nextLine();
+
+
+                    if (nomesAlunos.contains(nomeAntigo)) {
+                        System.out.println("Qual o novo nome? :");
+                        int indiceNomeAntigo = nomesAlunos.indexOf(nomeAntigo);
+                        String nomeNovo = scanner.nextLine();
+                        nomesAlunos.set(indiceNomeAntigo, nomeNovo);
+                    } else {
+                        System.out.println("Nome não encontrado.");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Qual o nome do aluno que quer alterar a nota? :");
+                    String nomeParaAlterarNota = scanner.nextLine();
+
+                    int indiceNome = nomesAlunos.indexOf(nomeParaAlterarNota);
+                    if (indiceNome != -1) {
+                        System.out.println("Qual a nova nota: ");
+                        double novaNota = scanner.nextDouble();
+                        notasAlunos.set(indiceNome, novaNota);
+                        System.out.println("Nota alterada.");
+                    } else {
+                        System.out.println("Aluno não encontrado.");
+                    }
+
+                    break;
+                case 4:
+                    System.out.println("Qual o nome do aluno que quer remover: ");
+                    String nomeRemover = scanner.nextLine();
+                    if (nomesAlunos.contains(nomeRemover)) {
+                        int indiceNomeRemover = nomesAlunos.indexOf(nomeRemover);
+                        nomesAlunos.remove(nomeRemover);
+                        notasAlunos.remove(indiceNomeRemover);
+                    } else {
+                        System.out.println("Nome não encontrado.");
+                    }
+
+
+                    System.out.println("Nota alterada.");
+                    break;
+                case 5:
+                    System.out.println("Aluno: " + nomesAlunos);
+                    System.out.println("Nota: " + notasAlunos);
+                    break;
+                case 6:
+                    // calcular a media da tuema
+                    double somaNotas = 0;
+                    //somar todas as notas
+                    for (int j = 0; j < notasAlunos.size(); j++) {
+                        somaNotas += notasAlunos.get(j);
+                    }
+                    //dividir pelo tamanho da lista
+                    double media = somaNotas / notasAlunos.size();
+                    System.out.println("A média da turma é: "+media);
+                    break;
+                case 7:
+                    System.out.println("Saindo");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+
+        } while (menu != 7);
+
+    }
+}
